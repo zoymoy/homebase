@@ -1,0 +1,20 @@
+export const Colors = {
+  primary: '#4A90D9',
+  primaryDark: '#3A7BC8',
+  primaryLight: '#6BA5E7',
+  secondary: '#F5A623',
+  background: '#F8F9FA',
+  surface: '#FFFFFF',
+  text: '#1A1A2E',
+  textSecondary: '#6B7280',
+  textLight: '#9CA3AF',
+  border: '#E5E7EB',
+  error: '#EF4444',
+  success: '#10B981',
+  warning: '#F59E0B',
+  done: '#D1D5DB',
+  avatarColors: [
+    '#4A90D9', '#F5A623', '#10B981', '#EF4444',
+    '#8B5CF6', '#EC4899', '#14B8A6', '#F97316',
+  ],
+};

@@ -1,0 +1,46 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper: is the user signed in?
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Helper: is the user a member of the family?
+    function isFamilyMember(familyId) {
+      return isSignedIn() &&
+        exists(/databases/$(database)/documents/families/$(familyId)) &&
+        request.auth.uid in get(/databases/$(database)/documents/families/$(familyId)).data.memberIds;
+    }
+
+    // Users collection
+    match /users/{userId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && request.auth.uid == userId;
+      allow update: if isSignedIn() && request.auth.uid == userId;
+    }
+
+    // Families collection
+    match /families/{familyId} {
+      allow read: if isFamilyMember(familyId);
+      allow create: if isSignedIn();
+      allow update: if isFamilyMember(familyId);
+
+      // Chores subcollection
+      match /chores/{choreId} {
+        allow read, write: if isFamilyMember(familyId);
+      }
+
+      // Lists subcollection
+      match /lists/{listId} {
+        allow read, write: if isFamilyMember(familyId);
+      }
+
+      // ETA events subcollection
+      match /eta_events/{eventId} {
+        allow read, write: if isFamilyMember(familyId);
+      }
+    }
+  }
+}
