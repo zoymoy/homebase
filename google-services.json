@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "714627988320",
+    "project_id": "homebase-family-app",
+    "storage_bucket": "homebase-family-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714627988320:android:9d46477b4e7def4c59bc05",
+        "android_client_info": {
+          "package_name": "com.homebase.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAemAbmEVzM_2stnjDJaZMD9N5h-iIYqYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
